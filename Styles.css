@@ -3,10 +3,14 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 /*Selectores generales */
-
+*{
+	margin: 0;
+	padding:0;
+	}
 body{
-	font-family:"Dancing Script";
 	background-color: #02010a;
+	font-family:"Dancing Script";
+	
 	}
 
 figure img{
@@ -17,86 +21,106 @@ figure img{
 .contenido{
 	width:90%;
 	margin:auto;
-	}
-
-
-/*encabezado */
-
-.encabezado{
-	/*propiedades generales*/
-	background-color:#5b7989;
-	border-radius: 10px;
-	color:#CCC;
-	width:100%;
-	height: 80px;
-	align-items: center;
 	
-	/* propiedades de caja */
-	display: flex;
-	flex-flow: row wrap;
-}
-.encabezado >div{
-	font-size: 0.8em;
-	color: #FFF;
-	text-shadow: 2px 2px 2px #02010a;
-	}
-.c1{
-	padding-left: 40px;
-	flex-grow: 2;
-	padding: center;
-}
-.c2{
-	padding-right:40px;
-	}
-
-.c3{
-	padding-right:40px;
 	
-	}
-
-.c4{
-	padding-right:40px;
+	/* Flexbox */
+	display:flex;
+	flex-flow:row wrap;
 		
+	}
+/* fin generales*/
+
+/* encabezado */
+header {
+	color:#fff;
+	background:#5b7989;
+	width:100%;
+	padding:10px;
+ 	font-size: 1.8em;
+	text-shadow: 2px 2px 2px  #02010a;
+	text-decoration: none;
+	border-radius: 10px 10px 0 0 ;
+	
+	/* Flexbox */
+	display: flex;
+	flex-flow:row wrap;
+	justify-content:space-between;
+	align-items:center;
 }
 
+header .logo h1{
+	width:100%;
+	font-size:1.5em;
+}
+
+header nav {
+	width:30%;
+	/* Flexbox */
+ 
+	display:flex;
+	flex-wrap:wrap;
+}
+ 
+header nav a {
+	color:#FFF;
+	text-decoration:underline;
+	padding:1px;
+ 	text-align:right;
+	
+	/* Flexbox */
+	flex-grow:1;
+	}
+	
+header nav a:hover{
+	text-decoration:none;
+	}
+header nav a:visited{
+	color:#fff;
+	text-decoration:none;
+	}
+ 
 /*propiedades generales bloque principal*/
 
 .principal{
 	width: 100%;
 	background:#82c3a6;
-	height: 400px;
+	
 	
 	/*Propiedades flex*/
 	
 	display: flex;
-	flex-flow: column wrap;
 	justify-content: center;
 	align-items: center;
 	}
 	
 	/*escalar la imagen*/
-.principal >figure{
-	transform: scale(0.6,0.6);
+.principal figure img{
+	width: 90%;
 	}
-	
 
 /* Propiedades segundo bloque de imagenes */
 .secundario{
 	width: 100%;
-	height: 450px;
 	background: #d5c75f;
 	border: 1px solid black;
 	
 	
 	/* propiedades flex*/
 	display: flex;
-	flex-flow: column wrap;
-	justify-content: center;
+	flex-flow: row wrap;
+	justify-content: space-around;
 	align-items: center;
 	}
 
 /* Propiedades imagenes secundarias*/
 
+. secundario figure{
+	width: 50%;	
+}
+
+. secundario figure img{
+	width:100%;
+	}
 #imagen-1 img{
 	transition-property: transform : rotate , box-shadow;
 	transition-duration: 1.5s , 2s;
@@ -120,33 +144,54 @@ figure img{
 
 /* pie de pagina */
 
-.pie-pagina{
-	width:100%;
-	height: 200px;
-	background-color: #C6d5c5;
-	
+footer {
+	background:#C6d5c5;
+	width: 100%;
+	text-shadow: 2px 2px 2px  #02010a;
+	border-radius: 0 0 10px 10px;
+	 
+	/* Flexbox */
 	display: flex;
-	flex-flow: column wrap;
-	justify-content: center;
-	align-items: center;
+	justify-content:space-around;
+	flex-flow:row wrap;
+
+}
+
+footer div{
+	text-align:center;
+	width:25%;
+	flex-grow:1;
+	
 	}
+footer div img{
+	width: 7%;	
+}
+ 
 	
 /* Estilo para page 2 y 3*/
+
 .principal-page2, .principal-page3{
-	width:100%;	
-	background: #d5c75f;
+	width:100%;
+	background: #82c3a6;
+	
+	/* FLEX */
+	
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
-}
-
-.principal-page2 >figure img, .principal-page3 >figure img{
-	width: 250px;
-	height:250px;
-	margin:auto;
 	}
+	
+.principal-page2 figure, .principal-page3 figure{
+	width:30%;
+	margin: auto;
+	
+	}
+.principal-page2 figure img, .principal-page3 figure img{
+	width:100%;
+	}
+	
 #b1{
-	 filter: blur(10px);
+	filter: blur(10px);
 	}
 #b2, #b4, #b6{
 	filter: grayscale(100%);
@@ -154,4 +199,62 @@ figure img{
 #b3{
 	filter: sepia(90%);
 	}
-/*--*/
+
+/*- media -*/
+
+@media screen and (max-width : 900px){
+	.contenido {
+		flex-flow:column wrap;
+	}
+ 
+	header {
+		
+		flex-flow:row wrap;
+		padding:0;
+	}
+ 
+	header .logo {
+		text-align:center;
+		width:100%;
+	}
+ 
+	header nav{
+		width: 100%;
+	}
+	header nav a{
+		text-align:center;
+	}
+	
+	/*page 1 */
+    .principal, .secundario{
+		flex-flow:column wrap;
+		
+		}
+	.principal figure , .secundario figure{
+		width: 100%;
+			 }	 
+			.secundario figure img{
+				width: 100%;
+				}
+
+	/*page 2 -3 */
+	.pincipal-page2, .principal-page3{
+		flex-flow: column wrap;
+		
+	}
+	.principal-page2 figure, .principal-page3 figure{
+		width: 100%;	
+	}
+ 
+	}
+@media screen and (max-width: 600px) {
+
+	footer {
+		flex-direction: column;
+		justify-content:space-around;
+	}
+	footer div {
+		width: 100%;
+		}
+}
+
